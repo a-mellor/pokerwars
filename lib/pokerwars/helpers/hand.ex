@@ -9,4 +9,10 @@ defmodule Pokerwars.Helpers.Hand do
   end
 
   def consecutive_ranks?(_), do: true
+
+  def x_of_a_kind?(ranks, x) do
+    Enum.any?(ranks, fn n ->
+      Enum.count(ranks, &(&1 ==n)) == x
+    end)
+  end
 end

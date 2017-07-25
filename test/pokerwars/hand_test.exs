@@ -91,4 +91,29 @@ defmodule Pokerwars.HandTest do
 
     assert Hand.score(cards) == :straight_flush
   end
+
+  test "vaild four of a kind" do
+    cards = [
+      %Card{rank: 5, suit: :hearts},
+      %Card{rank: 5, suit: :spades},
+      %Card{rank: 5, suit: :diamonds},
+      %Card{rank: 5, suit: :clubs},
+      %Card{rank: 3, suit: :diamond},
+    ]
+
+    assert Hand.score(cards) == :four_of_a_kind
+  end
+
+  test "invaild four of a kind" do
+    cards = [
+      %Card{rank: 5, suit: :hearts},
+      %Card{rank: 5, suit: :spades},
+      %Card{rank: 5, suit: :diamonds},
+      %Card{rank: 7, suit: :hearts},
+      %Card{rank: 3, suit: :diamond},
+    ]
+
+    refute Hand.score(cards) == :four_of_a_kind
+  end
 end
+

@@ -42,5 +42,17 @@ defmodule Pokerwars.Helpers.HandTest do
       refute Helper.consecutive_ranks?(ranks)
     end
   end
+
+  describe "x_of_a_kind?/2" do
+    test "returns true when given x of a kind" do
+      ranks = [2, 2, 4, 2, 2]
+      assert Helper.x_of_a_kind?(ranks, 4)
+    end
+
+    test "returns false when doesn't have x of a kind" do
+       ranks = [2, 2, 4, 2, 2]
+      refute Helper.x_of_a_kind?(ranks, 3)
+    end
+  end
 end
 

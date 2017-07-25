@@ -13,6 +13,8 @@ defmodule Pokerwars.Hand do
     cond do
       Helper.same_suit?(suits) && Helper.consecutive_ranks?(ranks) ->
         :straight_flush
+      Helper.x_of_a_kind?(ranks, 4) ->
+      	:four_of_a_kind
       true ->
         :not_matched
     end
